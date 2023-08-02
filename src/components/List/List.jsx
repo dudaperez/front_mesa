@@ -10,8 +10,12 @@ const List = () => {
     const [type, setType] = useState('restaurants');
     const [rating, setRating] = useState('');
     const places = [
-        {name: 'Cool Place'},
-        {name: 'Silvisnha'},
+        {name: 'Cool Place'}, 
+        {name: 'Bars'},
+        {name: 'Date'},
+        {name: 'Sushi'},
+        {name: 'Cool Place'}, 
+        {name: 'Bars'},
         {name: 'Date'},
         {name: 'Sushi'},
     ];
