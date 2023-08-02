@@ -7,23 +7,28 @@ import key from '../../env';
 
 import useStyles from './styles';
 
-
-const Map = () => {
+//EU TIVE QUE HABILITAR COORDS COMO ALGO FIXO, IDEALMENTE O CONTS MAP SERIA:
+//const Map = ({ coords, setCoords, setBounds, places}) => {
+const Map = ({ setCoords, setBounds, places}) => {
     const classes = useStyles();
     const isMobile = useMediaQuery('min-width::600px)');
-    const coordinates = {lat: -23.561998, lng: -46.685942 };
+    //isso aqui deveria ser apagado
+    const coords = {lat: -23.561998, lng: -46.685942 };
 
 
     return (
         <div className={classes.mapContainer}>
             <GoogleMapReact
                 bootstrapURLKeys = {{ key: key}}
-                defaultCenter={coordinates}
-                center = {coordinates}
-                defaultZoom = {14}
+                // defaultCenter={coords}
+                center = {coords}
+                defaultZoom = {18}
                 margin = {[50,50,50,50]}
                 options= {''}
-                onChange={''}
+                onChange={(e) => {
+                    setCoords({lat: e.center.lat, lng: e.center.lng});
+                    setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw});
+                }}
                 onChildClick={''}
         
 
