@@ -6,7 +6,8 @@ import Map from './components/Map/Map';
 import { getPlacesData } from './api';
 
 const App = () => {
-    const[places, setPlaces] = useState([]);
+    const[places, setPlaces] = useState([ ]);
+
 
     useEffect(()=> {
         getPlacesData()
