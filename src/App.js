@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { CssBaseline, Grid } from '@material-ui/core';
+import { CssBaseline, Grid, Button } from '@material-ui/core';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -12,6 +12,23 @@ const App = () => {
     // const[coordinatesLoaded, setCoordinatesLoaded ] = useState(false);
     const[bounds,setBounds] = useState({});
 
+    //Codigopara o botao
+    const handleSearchButtonClick = () => {
+        if (bounds.sw && bounds.ne) {
+          getPlacesData(bounds.sw, bounds.ne)
+            .then((data) => {
+              console.log(data);
+              setPlaces(data);
+            })
+            .catch((error) => {
+              console.error('Error fetching data:', error);
+            });
+        }
+      };
+
+//Fim do codigo para o botao
+
+
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({coords:{longitude, latitude} } )=> {
             setCoords({ lat: latitude, ln: longitude});
@@ -22,16 +39,16 @@ const App = () => {
     },[])
 
 
-    useEffect(()=> {
-        console.log(coords, bounds);
+    // useEffect(()=> {
+    //     console.log(coords, bounds);
 
-        getPlacesData(bounds.sw, bounds.ne)
-            .then((data)=>{
-                console.log(data);
+    //     getPlacesData(bounds.sw, bounds.ne)
+    //         .then((data)=>{
+    //             console.log(data);
                 
-                setPlaces(data);
-            })
-    },[coords, bounds]);
+    //             setPlaces(data);
+    //         })
+    // },[coords, bounds]);
 
     return(
 
@@ -48,7 +65,27 @@ const App = () => {
                     setCoords = {setCoords}
                     setBounds = {setBounds}
                     coords = {coords}
+                    bounds ={bounds}
+                    // ajuste para chamada de API pelo botao:
+                    setPlaces={setPlaces} // Pass the 'setPlaces' prop here
                     />
+                    
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            getPlacesData(bounds.sw, bounds.ne)
+                              .then((data) => {
+                                console.log(data);
+                                setPlaces(data);
+                              })
+                              .catch((error) => {
+                                console.error('Error fetching data:', error);
+                              });
+                          }}
+                    >
+                        Search This Area
+                    </Button> 
 
                 </Grid>
             </Grid>
