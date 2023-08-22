@@ -66,6 +66,7 @@ const App = () => {
                     setBounds = {setBounds}
                     coords = {coords}
                     bounds ={bounds}
+                    places={places}
                     // ajuste para chamada de API pelo botao:
                     setPlaces={setPlaces} // Pass the 'setPlaces' prop here
                     />

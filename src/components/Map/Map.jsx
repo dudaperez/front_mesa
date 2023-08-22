@@ -8,12 +8,13 @@ import key from '../../env';
 import { getPlacesData } from '../../api';
 
 import useStyles from './styles';
+import { LocationOn } from '@material-ui/icons';
 
 //EU TIVE QUE HABILITAR COORDS COMO ALGO FIXO, IDEALMENTE O CONTS MAP SERIA:
 //const Map = ({ coords, setCoords, setBounds, places}) => {
 const Map = ({ setCoords, setBounds, places,bounds }) => {
     const classes = useStyles();
-    const isMobile = useMediaQuery('min-width::600px)');
+    const isDesktop = useMediaQuery('min-width:600px)');
     //isso aqui deveria ser apagado
     const coords = {lat: -23.561998, lng: -46.685942 };
 
@@ -80,7 +81,40 @@ return (
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
         onChildClick={''}
-      ></GoogleMapReact>
+      >
+        {places?.map((place, i)=>(
+        <div
+            className = {classes.markerContainer}
+            lat = {Number(place.latitude)} 
+            lng={Number(place.longitude)}
+            key={i}
+        >
+            {
+                <LocationOn color = "primary" fontSize="large"/>
+            /* {
+                isDesktop ?(
+                    <LocationOnOutlinedIcon color = "primary" fontSize="large"/>
+
+                ):(
+                    <Paper elevation={3} className={classes.paper}>
+                        <Typography className={classes.Typography} variant = "subtitle2" gutterBottom>
+                            {place.name}
+
+                        </Typography>
+                        <img
+                            className={classes.pointer}
+                            src={place.photo? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                            alt={place.name}
+                        
+                        />
+
+                    </Paper>
+                )
+
+            } */}
+        </div>
+        ))}
+      </GoogleMapReact>
     </div>
   );
 };
