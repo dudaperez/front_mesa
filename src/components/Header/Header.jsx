@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Autocomplete } from '@react-google-maps/api'
 import {AppBar, Toolbar, Typography, InputBase, Box} from '@material-ui/core';
 import { classes } from 'istanbul-lib-coverage';
@@ -9,6 +9,13 @@ import useStyles from './styles';
 
 const Header = () => {
     const classes = useStyles();
+    const [autocomplete, setAutocomplete] = useState(null);
+
+    const onLoad=(autoC) => setAutocomplete(autoC);
+    const onPlaceChanged = () => {
+        const lat = autocomplete.getPlace().geometry.location.lat();
+        const lng = autocomplete.getPlace().geometry.location.lng();
+    }
 
     return (
         <AppBar position='static'>
@@ -20,7 +27,8 @@ const Header = () => {
                     <Typography variant= 'h6' className = {classes.title}>
                         Descubra onde você se sentará
                     </Typography>
-                    {/* <Autocomplete> */}
+                    {/* <Autocomplete onLoad={} onPlaceChanged={} > */}
+
                         <div className = {classes.search}>
                             <div className = {classes.searchIcon}>
                                 <SearchIcon />
