@@ -12,7 +12,7 @@ const App = () => {
     // const[coordinatesLoaded, setCoordinatesLoaded ] = useState(false);
     const[bounds,setBounds] = useState({});
 
-    //Codigopara o botao
+    //Codigo para o botao
     const handleSearchButtonClick = () => {
         if (bounds.sw && bounds.ne) {
           getPlacesData(bounds.sw, bounds.ne)
