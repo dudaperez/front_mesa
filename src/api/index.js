@@ -49,6 +49,22 @@ const URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
 
 
 
+let config = {
+  method: 'patch',
+  maxBodyLength: Infinity,
+  url: 'https://zwr420p112.execute-api.us-east-1.amazonaws.com/Prod/sets/1',
+  headers: { }
+};
+
+axios.request(config)
+.then((response) => {
+  console.log(JSON.stringify(response.data));
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
 export const getPlacesData = async (sw, ne) => {
     try{
         const {data: { data } } = await axios.get(URL, {

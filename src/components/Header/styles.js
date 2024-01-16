@@ -29,4 +29,13 @@ export default makeStyles((theme) => ({
   toolbar: {
     display: 'flex', justifyContent: 'space-between',
   },
+  button: {
+    // Add your custom button styles here
+    backgroundColor: '#007bff',
+    color: 'white',
+    padding: '8px 16px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
 }));
