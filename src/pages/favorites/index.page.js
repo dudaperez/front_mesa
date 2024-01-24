@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Button, Grid } from '@material-ui/core';
-import Map from '../components/Map/Map';
-import List from '../components/List/List';
-import getFavoritesAPI from '../api/favorites';
+import Map from '@/components/Map/Map';
+import List from '@/components/List/List';
+import getFavoritesAPI from '@/api/favorites';
 
 const Favorites = () => {
     const[places, setPlaces] = useState([]);
@@ -73,3 +73,11 @@ const Favorites = () => {
 
 export default Favorites;
 
+
+/**
+ * titlePage: Favorites
+ * path: /favorites
+ * componentName: favorites
+ * template: blank
+ * isPublic: true
+ */

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Button, Grid } from '@material-ui/core';
-import Map from '../components/Map/Map';
-import List from '../components/List/List';
-import { getPlacesData } from '../api';
+import Map from '../../components/Map/Map';
+import List from '../../components/List/List';
+import { getPlacesData } from '../../api';
 
 // const HomePage = () => {
 //   const [places, setPlaces] = useState([]);
@@ -137,3 +137,10 @@ const HomePage = () => {
 
 export default HomePage;
 
+/**
+ * titlePage: Home
+ * path: /
+ * componentName: home
+ * template: blank
+ * isPublic: true
+ */

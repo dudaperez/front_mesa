@@ -3,7 +3,6 @@ import GoogleMapReact from 'google-map-react';
 import { Button, Paper,Typography, useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab';
-import key from '../../env';
 
 import { getPlacesData } from '../../api';
 
@@ -71,7 +70,7 @@ const Map = ({ setCoords, setBounds, places,bounds }) => {
 return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: key }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_TRIPADVISOR_KEY }}
         center={coords}
         defaultZoom={18}
         margin={[50, 50, 50, 50]}
